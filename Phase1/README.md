@@ -14,11 +14,20 @@
 
 ---
 
-##  Overview
-This phase covers the **local installation and configuration of osTicket** — the open-source helpdesk ticketing system — hosted on **Internet Information Services (IIS)**.  
+## Project Overview
+This repository documents my full **osTicket Helpdesk Deployment journey**, from a local Windows IIS setup to a production-grade AWS deployment.  
+It demonstrates my experience with:
+- Windows Server administration  
+- IIS, PHP, and MySQL setup  
+- AWS cloud infrastructure (EC2, RDS, S3, Route 53, ACM, CloudWatch)  
+- Automation using Terraform and PowerShell  
+- Security hardening and performance optimization
+  
 It lays the foundation for the production-grade AWS deployment completed in **Phase 2**.
 
 ---
+## Phase 1 — Local IIS Deployment
+📁 [Phase1](./Phase1)
 
 ##  Technologies Used
 - **Windows 10 / Windows Server (21H2 or later)**  
@@ -28,6 +37,11 @@ It lays the foundation for the production-grade AWS deployment completed in **Ph
 - **HeidiSQL**  
 - **osTicket v1.15.8**
 
+### Highlights
+- Configured IIS web server to host osTicket locally  
+- Installed and configured PHP extensions and MySQL database  
+- Enabled necessary IIS modules and permissions  
+- Verified access for both end-users and agents 
 ---
 
 ## Step-by-Step Installation
@@ -152,10 +166,48 @@ C:\inetpub\wwwroot\osTicket\include\ost-config.php
 
 ---
 
-## Next Phase
+## Phase 2 — AWS Production Deployment
 Proceed to [Phase 2 — AWS Production Deployment](../Phase2)  
 where the osTicket instance is migrated and automated using **AWS EC2, RDS, S3, and Terraform**.
 
+### Technologies Used
+- AWS EC2, RDS, S3, Route 53, ACM, CloudWatch  
+- IIS, PHP, osTicket  
+- Terraform & PowerShell automation  
+
+### Highlights
+- Deployed osTicket on Windows Server 2025 (EC2)  
+- Configured RDS (MySQL) in a private subnet  
+- Integrated S3 for file/attachment storage  
+- Used Route 53 and ACM for domain + SSL management  
+- Added CloudWatch for monitoring and alerting  
+- Automated setup with Terraform (infra) & PowerShell (server config)  
+
+📸 *Screenshots available in* [`/Phase2/screenshots`](./Phase2/screenshots)
+
+---
+## Security and Best Practices
+- HTTPS enforced with valid SSL certificate  
+- IAM least-privilege access policies  
+- RDS private subnet access only via EC2  
+- Regular EC2 & RDS snapshots for recovery  
+- Removed public write permissions post-deployment  
+
+---
+
+## Future Enhancements
+- Dockerized osTicket stack (Nginx + PHP-FPM + MySQL)  
+- GitHub Actions CI/CD integration  
+- Automated RDS backups via Lambda  
+- Multi-region redundancy (Route 53 failover routing)  
+
+---
+
+## Learning Outcomes
+- Understanding of Windows Server web hosting  
+- Exposure to hybrid IT & cloud migration  
+- Hands-on experience with AWS infrastructure design  
+- Real-world implementation of Infrastructure-as-Code principles  
 ---
 
 ## Author
@@ -166,4 +218,5 @@ Cloud & Systems Administrator | DevOps Enthusiast
 ---
 
 ⭐ *If this project helped you, please consider starring the repository!*
+
 
